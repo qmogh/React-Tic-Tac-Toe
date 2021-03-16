@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css'; 
+import Confetti from 'react-confetti'
 
 function Square(props) {
   return (
@@ -63,6 +64,7 @@ class Game extends React.Component {
     const squares = current.squares.slice();
     if (calculateWinner(squares) || squares[i]) {
       return;
+      
     }
     squares[i] = this.state.xIsNext ? "X" : "O";
     this.setState({
@@ -102,11 +104,13 @@ class Game extends React.Component {
     let status;
     if (winner) {
       status = "Winner: " + winner;
+     
     } else {
       status = "Next player: " + (this.state.xIsNext ? "X" : "O");
     }
 
     return (
+
       <div className="game">
         <div className="game-board">
           <Board
@@ -143,6 +147,6 @@ function calculateWinner(squares) {
     if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
       return squares[a];
     }
-  }
+    }
   return null;
 }
